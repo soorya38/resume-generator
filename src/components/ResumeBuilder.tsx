@@ -701,16 +701,6 @@ export const ResumeBuilder: React.FC = () => {
       });
     }
 
-    if (education.length > 0) {
-      text += `========================================\n`;
-      text += `EDUCATION\n`;
-      text += `========================================\n`;
-      education.forEach(edu => {
-        text += `${edu.degree || 'Degree'} in ${edu.field || 'Field'}\n`;
-        text += `${edu.institution || 'School'} | Class of ${edu.year || 'Year'}${edu.gpa ? ` | GPA: ${edu.gpa}` : ''}\n\n`;
-      });
-    }
-
     if (projects.length > 0) {
       text += `========================================\n`;
       text += `PROJECTS\n`;
@@ -744,6 +734,16 @@ export const ResumeBuilder: React.FC = () => {
         text += `${cert.name || 'Cert'} – ${cert.org || 'Issuer'} (${cert.year || 'Year'})\n`;
       });
       text += `\n`;
+    }
+
+    if (education.length > 0) {
+      text += `========================================\n`;
+      text += `EDUCATION\n`;
+      text += `========================================\n`;
+      education.forEach(edu => {
+        text += `${edu.degree || 'Degree'} in ${edu.field || 'Field'}\n`;
+        text += `${edu.institution || 'School'} | Class of ${edu.year || 'Year'}${edu.gpa ? ` | GPA: ${edu.gpa}` : ''}\n\n`;
+      });
     }
 
     return text;
@@ -2051,34 +2051,6 @@ export const ResumeBuilder: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* 4. EDUCATION */}
-                    <div className="space-y-2">
-                      <h3 
-                        className={`text-[9.5pt] font-extrabold uppercase tracking-wider ${state.meta.template === 'classic' ? 'text-slate-800' : 'text-slate-900'} ${state.meta.template === 'modern' ? 'border-l-3 pl-2' : ''}`}
-                        style={state.meta.template !== 'classic' ? { borderColor: currentAccent.hex } : undefined}
-                      >
-                        Education
-                      </h3>
-                      {state.meta.template === 'executive' && <div className="border-b border-slate-200 pb-0.5 mb-1.5"></div>}
-                      
-                      <div className="space-y-2">
-                        {eduList.map((edu, idx) => (
-                          <div key={edu.id || idx} className={`flex justify-between items-start ${hasEmptyEdu ? 'text-slate-400 opacity-60' : ''}`}>
-                            <div>
-                              <p className="font-bold text-[8.5pt] text-slate-900">
-                                {edu.degree || 'Degree'}{edu.field ? ` in ${edu.field}` : ''}
-                              </p>
-                              <p className="text-[8pt] text-slate-600">{edu.institution || 'University Name'}</p>
-                            </div>
-                            <div className="text-right text-[8pt] text-slate-500 shrink-0">
-                              <p className="font-bold">{edu.year || 'Graduation Year'}</p>
-                              {edu.gpa && <p className="text-[8pt] text-slate-400">GPA: {edu.gpa}</p>}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
                     {/* 5. PROJECTS (Optional in UI) */}
                     {(state.projects.length > 0 || !hasEmptyProj) && (
                       <div className="space-y-2">
@@ -2169,6 +2141,34 @@ export const ResumeBuilder: React.FC = () => {
                         </div>
                       </div>
                     )}
+
+                    {/* 4. EDUCATION */}
+                    <div className="space-y-2">
+                      <h3 
+                        className={`text-[9.5pt] font-extrabold uppercase tracking-wider ${state.meta.template === 'classic' ? 'text-slate-800' : 'text-slate-900'} ${state.meta.template === 'modern' ? 'border-l-3 pl-2' : ''}`}
+                        style={state.meta.template !== 'classic' ? { borderColor: currentAccent.hex } : undefined}
+                      >
+                        Education
+                      </h3>
+                      {state.meta.template === 'executive' && <div className="border-b border-slate-200 pb-0.5 mb-1.5"></div>}
+                      
+                      <div className="space-y-2">
+                        {eduList.map((edu, idx) => (
+                          <div key={edu.id || idx} className={`flex justify-between items-start ${hasEmptyEdu ? 'text-slate-400 opacity-60' : ''}`}>
+                            <div>
+                              <p className="font-bold text-[8.5pt] text-slate-900">
+                                {edu.degree || 'Degree'}{edu.field ? ` in ${edu.field}` : ''}
+                              </p>
+                              <p className="text-[8pt] text-slate-600">{edu.institution || 'University Name'}</p>
+                            </div>
+                            <div className="text-right text-[8pt] text-slate-500 shrink-0">
+                              <p className="font-bold">{edu.year || 'Graduation Year'}</p>
+                              {edu.gpa && <p className="text-[8pt] text-slate-400">GPA: {edu.gpa}</p>}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
 
                   </div>
                 );

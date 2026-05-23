@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     textDecoration: 'none',
   },
   section: {
-    marginTop: 7,
+    marginTop: 9,
   },
   sectionTitle: {
     fontSize: 9.8,
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     textAlign: 'justify',
   },
   experienceItem: {
-    marginBottom: 4,
+    marginBottom: 6,
   },
   rowBetween: {
     flexDirection: 'row',
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
     lineHeight: 1.22,
   },
   projectItem: {
-    marginBottom: 4,
+    marginBottom: 8,
   },
   certItem: {
     marginBottom: 3,
@@ -374,29 +374,6 @@ export const ResumePDF: React.FC<ResumePDFProps> = ({ data }) => {
           </View>
         )}
 
-        {/* EDUCATION SECTION */}
-        {hasEducation && (
-          <View style={styles.section}>
-            {renderSectionTitle('Education')}
-            {education.map((edu) => (
-              <View key={edu.id} style={{ marginBottom: 4 }}>
-                <View style={styles.rowBetween}>
-                  <View style={{ flex: 1, paddingRight: 10 }}>
-                    <Text style={itemTitleStyle}>
-                      {edu.degree}{edu.field ? ` in ${edu.field}` : ''}
-                    </Text>
-                    <Text style={itemSubtitleStyle}>{edu.institution}</Text>
-                  </View>
-                  <View style={{ alignItems: 'flex-end' }}>
-                    <Text style={rightMetaStyle}>{edu.year}</Text>
-                    {edu.gpa ? <Text style={itemMetaStyle}>GPA: {edu.gpa}</Text> : null}
-                  </View>
-                </View>
-              </View>
-            ))}
-          </View>
-        )}
-
         {/* PROJECTS SECTION */}
         {hasProjects && (
           <View style={styles.section}>
@@ -475,6 +452,29 @@ export const ResumePDF: React.FC<ResumePDFProps> = ({ data }) => {
                     {cert.org ? ` – ${cert.org}` : ''}
                   </Text>
                   <Text style={rightMetaStyle}>{cert.year}</Text>
+                </View>
+              </View>
+            ))}
+          </View>
+        )}
+
+        {/* EDUCATION SECTION */}
+        {hasEducation && (
+          <View style={styles.section}>
+            {renderSectionTitle('Education')}
+            {education.map((edu) => (
+              <View key={edu.id} style={{ marginBottom: 4 }}>
+                <View style={styles.rowBetween}>
+                  <View style={{ flex: 1, paddingRight: 10 }}>
+                    <Text style={itemTitleStyle}>
+                      {edu.degree}{edu.field ? ` in ${edu.field}` : ''}
+                    </Text>
+                    <Text style={itemSubtitleStyle}>{edu.institution}</Text>
+                  </View>
+                  <View style={{ alignItems: 'flex-end' }}>
+                    <Text style={rightMetaStyle}>{edu.year}</Text>
+                    {edu.gpa ? <Text style={itemMetaStyle}>GPA: {edu.gpa}</Text> : null}
+                  </View>
                 </View>
               </View>
             ))}
