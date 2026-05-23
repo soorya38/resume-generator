@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     textDecoration: 'none',
   },
   section: {
-    marginTop: 9,
+    marginTop: 7,
   },
   sectionTitle: {
     fontSize: 9.8,
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     textAlign: 'justify',
   },
   experienceItem: {
-    marginBottom: 6,
+    marginBottom: 4,
   },
   rowBetween: {
     flexDirection: 'row',
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
     lineHeight: 1.22,
   },
   projectItem: {
-    marginBottom: 8,
+    marginBottom: 4,
   },
   certItem: {
     marginBottom: 3,
@@ -382,10 +382,10 @@ export const ResumePDF: React.FC<ResumePDFProps> = ({ data }) => {
               <View key={proj.id} style={styles.projectItem}>
                 <View style={styles.rowBetween}>
                   <View style={{ flex: 1, paddingRight: 10 }}>
-                    <Text style={itemTitleStyle}>
-                      {proj.name}
-                      {proj.tech ? ` (${proj.tech})` : ''}
-                    </Text>
+                    <Text style={itemTitleStyle}>{proj.name}</Text>
+                    {proj.tech ? (
+                      <Text style={itemMetaStyle}>{proj.tech}</Text>
+                    ) : null}
                   </View>
                   {proj.url ? (
                     <View style={{ alignItems: 'flex-end' }}>
