@@ -1,73 +1,79 @@
-# React + TypeScript + Vite
+# Resume Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A robust, enterprise-grade React and TypeScript application designed for constructing, optimizing, and compiling professional, ATS-compatible resumes. The application supports real-time editing, live layout template rendering, dynamic ATS keyword scoring, and high-fidelity client-side PDF generation.
 
-Currently, two official plugins are available:
+## Key Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Live Interactive Editor**: Seamless, form-based data entry covering all key professional dimensions, including custom contact information, professional summaries, work histories, educational credentials, side projects, categorized skills, and certifications.
+- **Applicant Tracking System (ATS) Optimizer**: An algorithmic scoring engine that assesses resume contents in real time. It calculates a completion score and parses pasted job descriptions to identify missing keywords and technical skills.
+- **Professional Templates**: Swap resume layouts on the fly with tailored font families, grid systems, and borders. Available templates include:
+  - **Classic**: Serif headers, centered alignment, traditional dividers, and elegant structural ratios.
+  - **Modern Minimalist**: Sans-serif headings, left-aligned titles, left-bordered accent lines, and a custom vertical accent band.
+  - **Executive**: Uppercase sans-serif headers, dynamic tracking, colored title accents, and horizontal separators.
+- **Client-Side PDF Compilation**: High-fidelity, client-side PDF rendering using `@react-pdf/renderer` that preserves layout alignments, padding bounds, page constraints, and font configurations exactly.
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Core Framework**: React 19 (TypeScript 5.x)
+- **Bundler**: Vite
+- **Styling**: Tailwind CSS
+- **PDF Generation**: `@react-pdf/renderer`
+- **Iconography**: Lucide React
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Ensure you have the following installed on your system:
+- Node.js (LTS version recommended)
+- npm (Node Package Manager)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Clone the repository to your local machine.
+2. Navigate to the project root directory.
+3. Install the required dependencies:
+   ```bash
+   npm install
+   ```
+
+### Development Server
+
+Launch the local development server with Hot Module Replacement (HMR):
+   ```bash
+   npm run dev
+   ```
+The development environment will be accessible at `http://localhost:5173`.
+
+### Production Build
+
+To compile a optimized production-ready bundle, run:
+   ```bash
+   npm run build
+   ```
+The output assets will be generated in the `dist` directory. To preview the production bundle locally:
+   ```bash
+   npm run preview
+   ```
+
+## Project Directory Structure
+
+```text
+├── src/
+│   ├── assets/         # Static assets and fonts
+│   ├── components/     # Application components (ResumeBuilder, ResumePDF)
+│   ├── types.ts        # TypeScript interface definitions
+│   ├── index.css       # Tailwind utility classes and base styles
+│   └── main.tsx        # React mounting bootstrap
+├── index.html          # HTML entrypoint template
+├── vite.config.ts      # Vite configuration schema
+├── tailwind.config.js  # Tailwind custom palette configuration
+└── tsconfig.json       # TypeScript compiler settings
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Linting and Code Quality
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+This project enforces strict code style guidelines using ESLint. To execute static analysis:
+   ```bash
+   npm run lint
+   ```

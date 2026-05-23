@@ -784,7 +784,7 @@ export const ResumeBuilder: React.FC = () => {
           </div>
           <div>
             <h1 className="text-xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-950 via-indigo-700 to-blue-600">
-              ResumeFlow ATS
+              Resume Generator
             </h1>
             <p className="text-xs text-slate-600">Production-grade ATS optimizer resume builder</p>
           </div>
