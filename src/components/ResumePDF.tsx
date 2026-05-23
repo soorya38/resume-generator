@@ -180,9 +180,14 @@ const styles = StyleSheet.create({
     fontSize: 8.4,
     color: '#1e293b',
   },
-  certTitle: {
+   certTitle: {
     fontFamily: 'Helvetica-Bold',
     color: '#0f172a',
+  },
+  projectDescription: {
+    fontSize: 8.4,
+    lineHeight: 1.22,
+    color: '#1e293b',
   }
 });
 
@@ -396,7 +401,7 @@ export const ResumePDF: React.FC<ResumePDFProps> = ({ data }) => {
                   ) : null}
                 </View>
                 {proj.description ? (
-                  <Text style={[styles.bulletContent, { marginTop: 1 }]}>{proj.description}</Text>
+                  <Text style={[styles.projectDescription, { marginTop: 1 }]}>{proj.description}</Text>
                 ) : null}
               </View>
             ))}

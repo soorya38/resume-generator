@@ -425,15 +425,23 @@ export const ResumeBuilder: React.FC = () => {
   const addSkill = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && skillInput.trim()) {
       e.preventDefault();
-      const newSkill: Skill = {
-        id: createId(),
-        name: skillInput.trim(),
-        group: skillGroupInput
-      };
-      updateResumeState(prev => ({
-        ...prev,
-        skills: [...prev.skills, newSkill]
-      }));
+      
+      const newSkills: Skill[] = skillInput
+        .split(',')
+        .map(s => s.trim())
+        .filter(s => s.length > 0)
+        .map(name => ({
+          id: `${createId()}-${Math.random().toString(36).substring(2, 5)}`,
+          name,
+          group: skillGroupInput
+        }));
+
+      if (newSkills.length > 0) {
+        updateResumeState(prev => ({
+          ...prev,
+          skills: [...prev.skills, ...newSkills]
+        }));
+      }
       setSkillInput('');
     }
   };
